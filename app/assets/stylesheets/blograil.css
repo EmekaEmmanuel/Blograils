@@ -46,8 +46,6 @@
     list-style: none;
 }
 
-.section1 {}
-
 .home_cards {
     display: flex;
     justify-content: space-between;
@@ -194,10 +192,6 @@
 .post_details_section1_card {
     border: 1px solid black;
     padding: 20px 10px;
-}
-
-.post_details_section1_card header{
-
 }
 
 .post_details_section1 .post_interaction {
