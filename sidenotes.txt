@@ -36,35 +36,6 @@ Likes
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 rails g scaffold User name:string photo:string bio:text posts_counter:integer 
 
 rails generate model User name:string photo:string bio:text posts_counter:integer 
@@ -75,3 +46,176 @@ rails generate model Comment text:text author_id:string post_id:string
 rails generate model Post title:string text:text comments_counter:integer likes_counter:integer author_id:references
 
 rails generate model Like author_id:references post_id:references
+
+
+
+
+
+
+
+
+
+   Prefix Verb                    URI Pattern                        Controller#Action
+    users GET                     /users(.:format)                    users#index
+          POST                    /users(.:format)                    users#create
+ new_user GET                     /users/new(.:format)                users#new
+edit_user GET                     /users/:id/edit(.:format)           users#edit
+     user GET                     /users/:id(.:format)                users#show
+          PATCH                   /users/:id(.:format)                users#update
+          PUT                     /users/:id(.:format)                users#update
+          DELETE                  /users/:id(.:format)    
+
+
+
+
+
+
+
+user details route
+             <%# <li><%= link_to "Home", user_path(10), class:"td_none" %></li> %>
+
+             <%# <% @users.each do |user| %>
+               <li class = 'user' >
+                    <div> 
+                    <img src='<%= user.photo %>' alt='<%= user.name %> thumbnail' />
+                    </div>
+                    <div class='user-name'>
+                         <h2><%= link_to user.name, user_path(user) %></h2>
+                         <p>Number of Posts: <%= user.posts_counter %></p>
+                    </div>
+               </li>
+          <% end %> %>
+
+
+ Mock user index view template
+<article class="home_cards">
+                <figure>
+                    <img src="./img/DSC_1151 copy.jpg" alt="">
+                </figure>
+                <div class="home_cards_details">
+                    <h3>Username: Emmy</h3>
+                    <p>Number of posts: 50</p>
+                </div>
+            </article>
+
+<article class="home_cards">
+                <figure>
+                    <img src="./img/DSC_1151 copy.jpg" alt="">
+                </figure>
+                <div class="home_cards_details">
+                    <h3>Username: Emmy</h3>
+                    <p>Number of posts: 50</p>
+                </div>
+            </article>
+
+
+
+show user details page<article>
+                <header> <h3>Post #1</h3></header>
+                <div><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quisquam placeat aliquam, minus obcaecati blanditiis.</p></div>
+            </article>
+            <article>
+                <header> <h3>Post #1</h3></header>
+                <div><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quisquam placeat aliquam, minus obcaecati blanditiis.</p></div>
+            </article>
+            <article>
+                <header> <h3>Post #1</h3></header>
+                <div><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quisquam placeat aliquam, minus obcaecati blanditiis.</p></div>
+            </article>
+            <article>
+                <header> <h3>Post #1</h3></header>
+                <div><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quisquam placeat aliquam, minus obcaecati blanditiis.</p></div>
+            </article>
+
+
+
+
+
+
+
+
+            <div class="user-box">
+    <img class="image-user" src=<%= @user.photo %> alt="user"/>
+    <div class="user-info">
+      <p class="user-name"><%= @user.name %></p>
+      <p class="user-post">Number of posts: <%= @user.posts_counter%></p>
+    </div>
+  </div>
+  <p class="user-bio"><%= @user.bio %></p>
+  
+  <% @user.three_most_recent_post.each do |post| %>
+    <%= link_to user_post_path(@user.id, post.id) do %>
+      <div class="user-recent-post">
+        <p class="post-title"><strong>Post</strong> : <%= post.title %></p>
+        <p class="post-text"><%= post.text %></p>
+        <h3 class="counters">Comments: <%= post.comments_counter %> <h3>
+         <h3> Likes: <%= post.likes_counter %> <h3 >
+          
+          </div>
+        <% end %>
+      <% end %>
+
+      <div class="button-user">
+        <button class="button">
+          <%= link_to "See all posts", user_posts_path(@user), class:"text-button" %>
+        </button>
+      </div>
+
+
+
+
+
+
+post
+ <article>
+                <div class="post_page_post_details_div" >
+                    <header><h3>Post #1</h3></header>
+                    <div><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A vitae est explicabo, ipsa laudantium ad.</p></div>
+
+                    <ul class="post_page_interaction list_style_none">
+                        <li>Comments: 5</li>
+                        <li>Likes: 4</li>
+                    </ul>
+
+                </div>
+
+
+
+
+                <ul class="post_page_user_comment_box list_style_none">
+                    <li>Username: Comment 1</li>
+                    <li>Username: Comment 2</li>
+                    <li>Username: Comment 3</li>
+                    <li>Username: Comment 4</li>
+                </ul>
+                
+            </article>
+
+
+
+
+
+
+
+
+            <div class='user-posts'>
+    <% @user.posts.each do |post| %>
+      <div class='list-posts'>
+        <h5><%= link_to post.title, user_post_path(@user, post) %></h5>
+        <p><%= post.text %></p>
+        <span class='like-comment'>
+          Comments: <%= post.comments_counter || 0 %>, 
+          Likes: <%= post.likes_counter || 0 %> 
+        </span>
+      </div>
+      <ul class='post-comment'>
+        <% if post.five_recent_comments %>
+          <p>No comments added!</p>
+        <% else %>
+          <% post.five_recent_comments.each do |comment| %>
+            <li><%= comment.users.name %>: <%= comment.text %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
