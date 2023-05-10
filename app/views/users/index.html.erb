@@ -1,1 +1,36 @@
-<h1> Users Page. Here is a list of all users. Select from users</h1>
+ <main>
+        <section class="section1">
+
+        <% @users.each do |user| %>
+            <article class="home_cards">
+                <figure>
+                    <img src='<%= user.photo %>' alt='<%= user.name %>'>
+                </figure>
+                <div class="home_cards_details">
+                    <h3>Username: <%= user.name %></h3>
+                    <p>Number of posts: <%= user.posts_counter %></p>
+                </div>
+            </article>
+        <% end %>
+
+            <article class="home_cards">
+                <figure>
+                    <img src="./img/DSC_1151 copy.jpg" alt="">
+                </figure>
+                <div class="home_cards_details">
+                    <h3>Username: Emmy</h3>
+                    <p>Number of posts: 50</p>
+                </div>
+            </article>
+
+            <article class="home_cards">
+                <figure>
+                    <img src="./img/DSC_1151 copy.jpg" alt="">
+                </figure>
+                <div class="home_cards_details">
+                    <h3>Username: Emmy</h3>
+                    <p>Number of posts: 50</p>
+                </div>
+            </article>
+        </section>
+    </main>

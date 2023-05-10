@@ -64,3 +64,24 @@ edit_user GET                     /users/:id/edit(.:format)           users#edit
           PATCH                   /users/:id(.:format)                users#update
           PUT                     /users/:id(.:format)                users#update
           DELETE                  /users/:id(.:format)    
+
+
+
+
+
+
+
+user details route
+             <%# <li><%= link_to "Home", user_path(10), class:"td_none" %></li> %>
+
+             <%# <% @users.each do |user| %>
+               <li class = 'user' >
+                    <div> 
+                    <img src='<%= user.photo %>' alt='<%= user.name %> thumbnail' />
+                    </div>
+                    <div class='user-name'>
+                         <h2><%= link_to user.name, user_path(user) %></h2>
+                         <p>Number of Posts: <%= user.posts_counter %></p>
+                    </div>
+               </li>
+          <% end %> %>
