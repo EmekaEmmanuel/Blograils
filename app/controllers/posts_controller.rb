@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def new 
+  def new
     @post = Post.new
     @showcurrentuser = current_user
   end
@@ -29,5 +29,4 @@ class PostsController < ApplicationController
   end
 
   private :post_params
-
 end

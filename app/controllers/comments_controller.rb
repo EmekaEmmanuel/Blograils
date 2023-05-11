@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
-
-def create
+  def create
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = params[:post_id]
 
@@ -16,5 +15,4 @@ def create
   end
 
   private :comment_params
-  
 end
