@@ -29,7 +29,7 @@
                 <% if !post.latest_five_comments %>
                  <li>No comments added!</li>  
                    <% else %>
-                    <% post.latest_five_comments.each do |comment| %>
+                    <% post.latest_five_comments.includes(:author).each do |comment| %>
                     <li><%= comment.author.name %>: <%= comment.text %></li> 
                  <% end %>
                 <% end %>
