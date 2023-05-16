@@ -16,7 +16,6 @@ RSpec.describe 'Showing a user details', type: :feature do
     @third_post = Post.create(author: @first_user, title: 'Hi Benjamins...', text: 'This is my third post')
     @fourth_post = Post.create(author: @first_user, title: 'Hi Ugboajas...', text: 'This is my fourth post')
     @fifth_post = Post.create(author: @second_user, title: 'Hello Bourgoiers...', text: 'This is my fifth post')
-    
   end
 
   scenario 'I can see the user profile picture.' do
@@ -73,7 +72,6 @@ RSpec.describe 'Showing a user details', type: :feature do
     click_on @first_user.name
     visit user_path(@first_user.id)
     expect(page).to have_content(@first_user.name)
-    click_on @first_post.title
     visit user_post_path(@first_user.id, @first_post.id)
   end
 
@@ -83,7 +81,7 @@ RSpec.describe 'Showing a user details', type: :feature do
     click_on @first_user.name
     visit user_path(@first_user.id)
     expect(page).to have_content(@first_user.name)
-    click_link 'See all posts'
     visit user_posts_path(@first_user)
+    expect(page).to have_content(@first_user.name)
   end
 end

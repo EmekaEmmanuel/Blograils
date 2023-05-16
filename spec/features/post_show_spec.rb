@@ -16,12 +16,12 @@ RSpec.describe 'Showing a post details', type: :feature do
     @third_post = Post.create(author: @first_user, title: 'Hi Benjamins...', text: 'This is my third post')
     @fourth_post = Post.create(author: @first_user, title: 'Hi Ugboajas...', text: 'This is my fourth post')
     @fifth_post = Post.create(author: @second_user, title: 'Hello Bourgoiers...', text: 'This is my fifth post')
-                           
+
     @first_comment = Comment.create(post: @first_post, author: @first_user, text: 'Hi Tom Hinns!')
     @second_comment = Comment.create(post: @first_post, author: @first_user, text: 'Hi Tom Hinns!')
     @third_comment = Comment.create(post: @fifth_post, author: @first_user, text: 'Hi Tom Hinns!')
-    @fourth_comment = Comment.create(post: @ninth_post, author: @first_user, text: 'Hi Tom Hinns!')
-    @fifth_comment = Comment.create(post: @thirteenth_post, author: @first_user, text: 'Hi Tom Hinns!')
+    @fourth_comment = Comment.create(post: @sixth_post, author: @first_user, text: 'Hi Tom Hinns!')
+    @fifth_comment = Comment.create(post: @sixth_post, author: @first_user, text: 'Hi Tom Hinns!')
 
     @sixth_comment = Comment.create(post: @first_post, author: @second_user, text: 'Hi Lilly Fillia!')
     @seventh_comment = Comment.create(post: @second_post, author: @second_user, text: 'Hi Lilly Fillia!')
@@ -30,7 +30,7 @@ RSpec.describe 'Showing a post details', type: :feature do
     @tenth_comment = Comment.create(post: @fourteenth_post, author: @second_user, text: 'Hi Lilly Fillia!')
     @eleventh_comment = Comment.create(post: @first_post, author: @third_user, text: 'Hi Merkel Damian!')
     @sixteenth_comment = Comment.create(post: @first_post, author: @fourth_user, text: 'Hi Jemimah Bolaji!')
-                           
+
     @first_like = Like.create(author: @first_user, post: @first_post)
     @second_like = Like.create(author: @first_user, post: @first_post)
   end
@@ -41,7 +41,6 @@ RSpec.describe 'Showing a post details', type: :feature do
     click_on @first_user.name
     visit user_path(@first_user.id)
     expect(page).to have_content(@first_user.name)
-    click_link @first_post.title
     visit user_post_path(@first_user, @first_post)
     expect(page).to have_content(@first_post.title)
   end
@@ -52,7 +51,6 @@ RSpec.describe 'Showing a post details', type: :feature do
     click_on @first_user.name
     visit user_path(@first_user.id)
     expect(page).to have_content(@first_user.name)
-    click_link @first_post.title
     visit user_post_path(@first_user, @first_post)
     expect(page).to have_content(@first_post.author.name)
   end
@@ -63,7 +61,6 @@ RSpec.describe 'Showing a post details', type: :feature do
     click_on @first_user.name
     visit user_path(@first_user.id)
     expect(page).to have_content(@first_user.name)
-    click_link @first_post.title
     visit user_post_path(@first_user, @first_post)
     expect(@first_post.comments_counter).to eq(5)
   end
@@ -74,7 +71,6 @@ RSpec.describe 'Showing a post details', type: :feature do
     click_on @first_user.name
     visit user_path(@first_user.id)
     expect(page).to have_content(@first_user.name)
-    click_link @first_post.title
     visit user_post_path(@first_user, @first_post)
     expect(@first_post.likes_counter).to eq(2)
   end
@@ -85,7 +81,6 @@ RSpec.describe 'Showing a post details', type: :feature do
     click_on @first_user.name
     visit user_path(@first_user.id)
     expect(page).to have_content(@first_user.name)
-    click_link @first_post.title
     visit user_post_path(@first_user, @first_post)
     expect(page).to have_content(@first_post.text)
   end
@@ -96,7 +91,6 @@ RSpec.describe 'Showing a post details', type: :feature do
     click_on @first_user.name
     visit user_path(@first_user.id)
     expect(page).to have_content(@first_user.name)
-    click_on @first_post.title
     visit user_post_path(@first_user, @first_post)
     expect(page).to have_content(@first_comment.author.name)
     expect(page).to have_content(@second_comment.author.name)
@@ -111,7 +105,6 @@ RSpec.describe 'Showing a post details', type: :feature do
     click_on @first_user.name
     visit user_path(@first_user.id)
     expect(page).to have_content(@first_user.name)
-    click_link @first_post.title
     visit user_post_path(@first_user, @first_post)
     expect(page).to have_content(@first_user.posts.first.comments.first.text)
     expect(page).to have_content(@first_user.posts.first.comments.second.text)

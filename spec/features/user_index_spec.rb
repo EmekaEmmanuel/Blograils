@@ -16,7 +16,6 @@ RSpec.describe 'Creating a user', type: :feature do
     @third_post = Post.create(author: @first_user, title: 'Hi Benjamins...', text: 'This is my third post')
     @fourth_post = Post.create(author: @first_user, title: 'Hi Ugboajas...', text: 'This is my fourth post')
     @fifth_post = Post.create(author: @second_user, title: 'Hello Bourgoiers...', text: 'This is my fifth post')
-
   end
 
   scenario 'I can see the username of all other users.' do

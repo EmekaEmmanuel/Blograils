@@ -20,8 +20,8 @@ RSpec.describe 'Showing all posts', type: :feature do
     @first_comment = Comment.create(post: @first_post, author: @first_user, text: 'Hi Tom Hinns!')
     @second_comment = Comment.create(post: @first_post, author: @first_user, text: 'Hi Tom Hinns!')
     @third_comment = Comment.create(post: @fifth_post, author: @first_user, text: 'Hi Tom Hinns!')
-    @fourth_comment = Comment.create(post: @ninth_post, author: @first_user, text: 'Hi Tom Hinns!')
-    @fifth_comment = Comment.create(post: @thirteenth_post, author: @first_user, text: 'Hi Tom Hinns!')
+    @fourth_comment = Comment.create(post: @sixth_post, author: @first_user, text: 'Hi Tom Hinns!')
+    @fifth_comment = Comment.create(post: @sixth_post, author: @first_user, text: 'Hi Tom Hinns!')
 
     @sixth_comment = Comment.create(post: @first_post, author: @second_user, text: 'Hi Lilly Fillia!')
     @seventh_comment = Comment.create(post: @second_post, author: @second_user, text: 'Hi Lilly Fillia!')
@@ -140,8 +140,8 @@ RSpec.describe 'Showing all posts', type: :feature do
     click_on @first_user.name
     visit user_path(@first_user.id)
     expect(page).to have_content(@first_user.name)
-    click_on @first_post.title
-    # visit user_post_path(@first_user, @first_post)
-    # expect(page).to have_content(@first_post.title)
+    # click_on @first_post.title
+    visit user_post_path(@first_user, @first_post)
+    expect(page).to have_content(@first_post.title)
   end
 end
