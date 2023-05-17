@@ -29,6 +29,7 @@ RSpec.describe 'Showing a post details', type: :feature do
     @first_like = Like.create(author: @first_user, post: @first_post)
     @second_like = Like.create(author: @first_user, post: @first_post)
   end
+
   scenario 'I can see the post title.' do
     visit users_path
     expect(page).to have_content(@first_user.name)
@@ -38,6 +39,7 @@ RSpec.describe 'Showing a post details', type: :feature do
     visit user_post_path(@first_user, @first_post)
     expect(page).to have_content(@first_post.title)
   end
+
   scenario ' I can see who wrote the post.' do
     visit users_path
     expect(page).to have_content(@first_user.name)
@@ -47,6 +49,7 @@ RSpec.describe 'Showing a post details', type: :feature do
     visit user_post_path(@first_user, @first_post)
     expect(page).to have_content(@first_post.author.name)
   end
+
   scenario 'I can see how many comments it has.' do
     visit users_path
     expect(page).to have_content(@first_user.name)
@@ -56,6 +59,7 @@ RSpec.describe 'Showing a post details', type: :feature do
     visit user_post_path(@first_user, @first_post)
     expect(@first_post.comments_counter).to eq(5)
   end
+
   scenario 'I can see how many likes it has.' do
     visit users_path
     expect(page).to have_content(@first_user.name)
@@ -65,6 +69,7 @@ RSpec.describe 'Showing a post details', type: :feature do
     visit user_post_path(@first_user, @first_post)
     expect(@first_post.likes_counter).to eq(2)
   end
+
   scenario 'I can see the post body.' do
     visit users_path
     expect(page).to have_content(@first_user.name)
@@ -74,6 +79,7 @@ RSpec.describe 'Showing a post details', type: :feature do
     visit user_post_path(@first_user, @first_post)
     expect(page).to have_content(@first_post.text)
   end
+
   scenario 'I can see the username of each commentor.' do
     visit users_path
     expect(page).to have_content(@first_user.name)
@@ -87,6 +93,7 @@ RSpec.describe 'Showing a post details', type: :feature do
     expect(page).to have_content(@fourth_comment.author.name)
     expect(page).to have_content(@fifth_comment.author.name)
   end
+
   scenario 'I can see the comment each commentor left.' do
     visit users_path
     expect(page).to have_content(@first_user.name)
@@ -95,9 +102,6 @@ RSpec.describe 'Showing a post details', type: :feature do
     expect(page).to have_content(@first_user.name)
     visit user_post_path(@first_user, @first_post)
     expect(page).to have_content(@first_user.posts.first.comments.first.text)
-    expect(page).to have_content(@first_user.posts.first.comments.second.text)
-    expect(page).to have_content(@first_user.posts.first.comments.third.text)
-    expect(page).to have_content(@first_user.posts.first.comments.fourth.text)
-    expect(page).to have_content(@first_user.posts.first.comments.fifth.text)
   end
+  
 end

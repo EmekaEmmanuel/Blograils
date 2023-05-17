@@ -22,6 +22,7 @@ RSpec.describe 'Showing a user details', type: :feature do
     visit user_path(@first_user.id)
     expect(@first_user.photo).to match(%r{^https?://.*\.(jpe?g|gif|png)$})
   end
+
   scenario 'I can see the user username.' do
     visit users_path
     expect(page).to have_content(@first_user.name)
@@ -29,6 +30,7 @@ RSpec.describe 'Showing a user details', type: :feature do
     visit user_path(@first_user.id)
     expect(page).to have_content(@first_user.name)
   end
+
   scenario 'I can see the number of posts the user has written.' do
     visit users_path
     expect(page).to have_content(@first_user.name)
@@ -36,6 +38,7 @@ RSpec.describe 'Showing a user details', type: :feature do
     visit user_path(@first_user.id)
     expect(@first_user.posts_counter).to eq(4)
   end
+
   scenario 'I can see the user bio.' do
     visit users_path
     expect(page).to have_content(@first_user.name)
@@ -43,6 +46,7 @@ RSpec.describe 'Showing a user details', type: :feature do
     visit user_path(@first_user.id)
     expect(page).to have_content(@first_user.bio)
   end
+
   scenario ' I can see the user first 3 posts.' do
     visit users_path
     expect(page).to have_content(@first_user.name)
@@ -50,6 +54,7 @@ RSpec.describe 'Showing a user details', type: :feature do
     visit user_path(@first_user.id)
     expect(@first_user.first_three_posts).to eq([@first_post, @second_post, @third_post])
   end
+
   scenario 'I can see a button that lets me view all of a user posts.' do
     visit users_path
     expect(page).to have_content(@first_user.name)
@@ -57,6 +62,7 @@ RSpec.describe 'Showing a user details', type: :feature do
     visit user_path(@first_user.id)
     expect(page).to have_content('See all posts')
   end
+
   scenario 'When I click a user post, it redirects me to that post show page.' do
     visit users_path
     expect(page).to have_content(@first_user.name)
@@ -65,6 +71,7 @@ RSpec.describe 'Showing a user details', type: :feature do
     expect(page).to have_content(@first_user.name)
     visit user_post_path(@first_user.id, @first_post.id)
   end
+
   scenario 'When I click to see all posts, it redirects me to the user post index page.' do
     visit users_path
     expect(page).to have_content(@first_user.name)
@@ -74,4 +81,5 @@ RSpec.describe 'Showing a user details', type: :feature do
     visit user_posts_path(@first_user)
     expect(page).to have_content(@first_user.name)
   end
+  
 end
