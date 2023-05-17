@@ -81,5 +81,4 @@ RSpec.describe 'Showing a user details', type: :feature do
     visit user_posts_path(@first_user)
     expect(page).to have_content(@first_user.name)
   end
-  
 end

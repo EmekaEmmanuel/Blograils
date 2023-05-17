@@ -103,5 +103,4 @@ RSpec.describe 'Showing a post details', type: :feature do
     visit user_post_path(@first_user, @first_post)
     expect(page).to have_content(@first_user.posts.first.comments.first.text)
   end
-  
 end
