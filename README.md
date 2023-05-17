@@ -78,7 +78,13 @@ To run the project, execute the following command in terminal:
 
 - GitHub: [EmekaEmmanuel](https://github.com/EmekaEmmanuel)
 - Twitter: [@emekaekeoha](https://twitter.com/emekaekeoha)
-- LinkedIn: [emeka-ugboaja](https://www.linkedin.com/in/emeka-ugboaja)
+- LinkedIn: [emeka-ugboaja](https://www.linkedin.com/in/emeka-ugboaja) 
+
+👤 **Innocent N.**
+
+- GitHub: [@chaseknis](https://github.com/Chaseknis)
+- Twitter: [@ChaseToTheWorld](https://twitter.com/chasetotheworld)
+- LinkedIn: [Innocent N.](https://www.linkedin.com/in/innocent-n-200826252/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
