@@ -1,14 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<main>
+    <section class="section1">
 
-<h1>Users</h1>
+    <% @users.each do |user| %>
+        <article class="home_cards">
+            <figure>
+                <img src=<%= user.photo %> alt='<%= user.name %>'>
+            </figure>
+            <div class="home_cards_details">
+            <h2></h2>
+                <h3>Username: <%= link_to user.name, user_path(user.id), class:"td_none" %></h3>
+                <p>Number of posts: <%= user.posts_counter %></p>
+            </div>
+        </article>
+    <% end %>
 
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New user", new_user_path %>
+    </section>
+</main>
