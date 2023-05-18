@@ -8,7 +8,6 @@ class Ability
     can :create, [Comment, Post, Like]
     can :destroy, [Comment, Post, Like]
 
-
     if user.role == 'admin'
       can :manage, :all
     else
