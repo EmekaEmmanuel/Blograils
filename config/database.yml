@@ -60,6 +60,8 @@ development:
 test:
   <<: *default
   database: Blograils_test
+  # username: postgres
+  # password: emekaascp1@
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -86,3 +88,6 @@ production:
   database: Blograils_production
   username: Blograils
   password: <%= ENV["BLOGRAILS_DATABASE_PASSWORD"] %>
+
+# rails db:migrate:reset RAILS_ENV=test
+
