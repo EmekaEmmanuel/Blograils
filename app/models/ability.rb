@@ -6,6 +6,7 @@ class Ability
 
     can :read, :all
     can :create, [Comment, Post, Like]
+    can :destroy, [Comment, Post, Like]
 
 
     if user.role == 'admin'
