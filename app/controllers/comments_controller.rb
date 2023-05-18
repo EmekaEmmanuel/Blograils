@@ -1,12 +1,11 @@
 class CommentsController < ApplicationController
-
   load_and_authorize_resource
 
   def create
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = params[:post_id]
 
-    if @comment.save 
+    if @comment.save
       # redirect_to previous url link or page if available
       redirect_to request.referrer
     else

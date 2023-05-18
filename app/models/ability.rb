@@ -1,14 +1,11 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
   def initialize(user)
-
     return unless user.present?
 
     can :read, :all
-    can :create, [Comment, Post, Like] 
+    can :create, [Comment, Post, Like]
 
 
     if user.role == 'admin'
@@ -18,7 +15,7 @@ class Ability
       can :destroy, Post, author: user
       can :destroy, Like, author: user
     end
-    
+
     # can :read, Post, public: true
 
     # return unless user.present?  # additional permissions for logged in users (they can read their own posts)
