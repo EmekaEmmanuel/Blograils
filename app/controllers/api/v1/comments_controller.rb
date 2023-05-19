@@ -9,7 +9,7 @@ class Api::V1::CommentsController < ApplicationController
     respond_to do |format|
       format.json { render json: @comments, status: 200 }
     end
-  end 
+  end
 
   def create
     @comment = current_user.comments.new(comment_params)
