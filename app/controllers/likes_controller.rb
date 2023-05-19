@@ -6,10 +6,10 @@ class LikesController < ApplicationController
     @user = User.find(params[:user_id])
     @likes = post.likes
 
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: @likes, status: 200 }
-    # end
+    respond_to do |format|
+      format.html
+      format.json { render json: @likes, status: 200 }
+    end
   end
 
   def create

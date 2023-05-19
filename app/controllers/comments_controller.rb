@@ -2,14 +2,19 @@ class CommentsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post_id])
     @user = User.find(params[:user_id])
-    @comments = post.comments
+    @comments = @post.comments
 
     respond_to do |format|
       format.html
       format.json { render json: @comments, status: 200 }
     end
+  end
+
+  def new
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find(params[:post_id])
   end
 
   def create

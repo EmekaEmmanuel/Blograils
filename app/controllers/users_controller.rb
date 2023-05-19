@@ -11,10 +11,12 @@ class UsersController < ApplicationController
   def show
     if params[:id] == 'sign_out'
       sign_out current_user
+      # helps to redirect_to new_user_session_path
+      format.html { redirect_to new_user_session_path, notice: 'Sign out succesfully' unless @user }
     else
       @user = User.find_by(id: params[:id])
       respond_to do |format|
-        format.html { redirect_to users_path, notice: 'User not found' unless @user }
+        format.html { redirect_to users_path, notice: 'User found' unless @user }
         format.json { render json: @user, status: 200 }
       end
     end
