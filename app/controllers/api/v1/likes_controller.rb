@@ -20,7 +20,9 @@ class Api::V1::LikesController < ApplicationController
         format.json { render json: @like, status: 200 }
       end
     else
-      format.json { render json: @like.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        format.json { render json: @like.errors, status: :unprocessable_entity }
+      end
     end
   end
 end
